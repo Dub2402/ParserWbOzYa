@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
 import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
-from dublib.Methods.JSON import ReadJSON
+from dublib.Methods.Filesystem import ReadJSON
 import os
 import sys
 
@@ -109,7 +109,6 @@ class Parser:
 	def __init__(self, use_vpn: bool = True) -> None:
 
 		# Чтение настроек.
-		self.__Setings = ReadJSON("Settings.json")
 		chrome_options = Options()
 		if "linux" in sys.platform: chrome_options.add_argument(r'user-data-dir=./User')
 		if "win32" in sys.platform: chrome_options.add_argument('user-data-dir=' + os.path.dirname(__file__) + "\\User")
@@ -125,8 +124,8 @@ class Parser:
 		self.__browser = webdriver.Chrome(options=chrome_options)
 		self.__browser.set_window_size(1920, 1080)
 
-		if use_vpn and self.__Setings["vpn_extension_identificator"]:
-			VPN_Name = self.__Setings["vpn_extension_identificator"]
+		if use_vpn:
+			VPN_Name = "adlpodnneegcnbophopdmhedicjbcgco"
 			self.__Get(f"chrome-extension://{VPN_Name}/popup.html")
 			sleep(1)
 			self.__Refresh()

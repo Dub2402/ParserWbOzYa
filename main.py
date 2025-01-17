@@ -1,6 +1,5 @@
 from dublib.CLI.Terminalyzer import Command, Terminalyzer
-from dublib.Methods.JSON import ReadJSON
-from dublib.Methods.Filesystem import MakeRootDirectories
+from dublib.Methods.Filesystem import ReadJSON, MakeRootDirectories
 from Source.Reader import Reader
 from Source.Parser import Parser
 from Source.Writer import Writer
@@ -8,7 +7,7 @@ from Source.Sender import Sender
 
 import os
 
-MakeRootDirectories(["Output", "Input"])
+MakeRootDirectories(["Output"])
 
 #==========================================================================================#
 # >>>>> НАСТРОЙКА ОБРАБОТЧИКА КОМАНД <<<<< #
